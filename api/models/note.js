@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   const Note = sequelize.define('Note', {
     image: DataTypes.STRING,
     text: DataTypes.STRING,
-    UserId: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER,
+    share: DataTypes.BOOLEAN
   }, {});
   Note.associate = function (models) {
     // associations can be defined here

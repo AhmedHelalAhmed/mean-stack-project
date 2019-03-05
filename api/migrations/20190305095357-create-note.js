@@ -14,8 +14,12 @@ module.exports = {
       text: {
         type: Sequelize.STRING
       },
-      UserId: {
+      userId: {
         type: Sequelize.INTEGER
+      },
+      share: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       createdAt: {
         allowNull: false,
