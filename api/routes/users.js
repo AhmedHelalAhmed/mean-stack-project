@@ -1,16 +1,17 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models/index');
+var VerifyToken = require('../auth/VerifyToken');
 
 /* get all users. */
-router.get('/', function (req, res, next) {
+router.get('/', VerifyToken, (req, res, next) => {
 
   models.User.findAll().then((result) => res.json(result));
 
 });
 
 /* create new user */
-router.post('/', (req, res, next) => {
+router.post('/', VerifyToken, (req, res, next) => {
   models.User.create({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -23,18 +24,18 @@ router.post('/', (req, res, next) => {
 });
 
 /* get a user */
-router.get("/:id", (req, res) =>
+router.get("/:id", VerifyToken, (req, res) =>
   models.User.findById(req.params.id).then((result) => res.json(result))
 );
 
 /* get a user */
-router.get("/:id", (req, res) =>
+router.get("/:id", VerifyToken, (req, res) =>
   models.User.findById(req.params.id).then((result) => res.json(result))
 );
 
 
 /* update a user */
-router.put("/:id", (req, res) =>
+router.put("/:id", VerifyToken, (req, res) =>
   models.User.update({
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -51,7 +52,7 @@ router.put("/:id", (req, res) =>
 
 
 /* delete a user */
-router.delete("/:id", (req, res) =>
+router.delete("/:id", VerifyToken, (req, res) =>
   models.User.destroy({
     where: {
       id: req.params.id
