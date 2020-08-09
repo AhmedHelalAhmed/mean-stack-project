@@ -1,1 +1,3 @@
-# full stack nodejs application
+# Mean stack project
+
+nodejs as backend and vuejs as frontend
